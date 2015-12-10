@@ -1,0 +1,42 @@
+
+body {
+  font: 15px sans-serif;
+  shape-rendering: crispEdges;
+}
+
+.day {
+  fill: #fff;
+  stroke: #ccc;
+}
+
+.month {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+
+      rect.bordered {
+        stroke: #E6E6E6;
+        stroke-width:2px;   
+      }
+
+      text.mono {
+      font: 15px sans-serif;
+        fill: #aaa;
+      }
+
+      text.axis-workweek {
+        fill: #000;
+      }
+
+      text.axis-worktime {
+        fill: #000;
+      }
+
+.RdYlGn .q0-6{fill:rgb(255,255,191)}
+.RdYlGn .q1-6{fill:rgb(217,239,139)}
+.RdYlGn .q2-6{fill:rgb(166,217,106)}
+.RdYlGn .q3-6{fill:rgb(102,189,99)}
+.RdYlGn .q4-6{fill:rgb(26,152,80)}
+.RdYlGn .q5-6{fill:rgb(0,104,55)}
