@@ -2,7 +2,20 @@
 body {
   font: 15px sans-serif;
   shape-rendering: crispEdges;
+  margin: 0 auto;
+  width: 960px;
 }
+
+p {
+    font: 20px sans-serif;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    line-height: 1.5;
+}
+
+
+
+
 
 .day {
   fill: #fff;

@@ -178,9 +178,7 @@ function plot3() {
         // Set a variety of default colors
         myChart.defaultColors = [
             /* new dimple.color("#7fc97f"),*/
-            new dimple.color("#beaed4"),
-            new dimple.color("#fdc086"),
-            new dimple.color("#386cb0")
+            new dimple.color("#beaed4")
         ];
 
         myChart.setBounds(60, 40, 720, 255);
