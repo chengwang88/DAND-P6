@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<header>
+    <meta charset="UTF-8">
+    <meta name="author" content="Cheng Wang">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+    <script src="js/d3.min.js"></script>
+    <script src="js/dimple.v2.1.6.min.js"></script>
+    <script src="js/main.js"></script>
+
+</header>
+
+<body>
+
+    <div class="row">
+        <center>
+            <h2> Flight Cancellations and Delays</h2></center>
+        <center>
+            <h3> Data Analyst Nanodegree - Project 6</h3></center>
+        <center>
+            <h4> Cheng Wang</h4></center>
+
+        <div class='col-md-12'>
+
+            <h3 style="font-style: italic">Data Set</h3>
+            <p> United State flight delays and performance data set is from
+                <a href="http://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp" target="_blank">RITA</a>. The clean data set for 2008
+                is download from
+                <a href="http://stat-computing.org/dataexpo/2009/the-data.html" target="_blank">here</a>. Flight cancellation
+                and delay information in 2008 are explored in this report.
+            </p>
+
+
+
+            <h3 style="font-style: italic">Flight Cancellations</h3>
+
+            <p> The flight cancellation rate (number of cancelled flights over number of total flights) for each month in 2008
+                is shown as stacking bar in Figure 1. We can see that January to March and December have high cancellation
+                rate comparing to other months. In addition, we also can see the flight cancellation rate by extreme weather
+                are also high in these months. It makes sense that the high cancellation rate in winter season could be caused
+                by the snow.
+            </p>
+
+            <p>
+                However, the cancellation caused by weather in September is also high. In order to find the reason of high cancellation in
+                September, flight cancellation heatmap for each day in 2008 is shown in Figure 2. We can see that Sep. 12
+                to Sep. 14 have over 1000 flights cancellation each day and it is <a href="http://www.srh.noaa.gov/lzk/?n=svr0908yr.htm" target="_blank"> hurricane Ike</a>                after I check the weather history.
+            </p>
+
+        </div>
+
+        <br>
+        <center>
+            <h4> Figure 1: Flight Cancellation Rate of Each Month in 2008</h4></center>
+        <div class="cancelBar">
+            <script>
+                plot1()
+            </script>
+        </div>
+
+
+        <br>
+        <center>
+            <h4> Figure 2: Number of Flight Cancellation for Each Day in 2008</h4></center>
+        <br>
+        <div class="cancelCalendar">
+            <script>
+                plot2()
+            </script>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class='col-md-12'>
+
+            <h3 style="font-style: italic">Flight Delays</h3>
+
+            <p> The average flight delay time is calculated over the hour of day as in Figure 3. The flights scheduled at 8 pm
+                to 9 pm have the highest average delay time 17 minutes. The average delay time increases from 5 am to 8 pm.
+                Then it decreases after 8 pm. At 3 am, the average delay time is 11 minutes which is significantly higher
+                than other time in the early morning.
+            </p>
+
+            <p> Figure 4 shows the average delay time over hours and days by week. Monday morning at 3 am have long delay time
+                as well as Firday night 6 pm to 8 pm.</p>
+
+        </div>
+
+
+
+        <br>
+        <center>
+            <h4> Figure 3: Average Flights Delay Time Over Hours</h4></center>
+        <div class="delayBar">
+            <script>
+                plot3()
+            </script>
+        </div>
+
+
+        <br>
+        <center>
+            <h4> Figure 4: Heatmap of Average Flights Delay Time Over Hours and Days by Week</h4></center>
+        <div class="delayHeatmap">
+            <script>
+                plot4()
+            </script>
+        </div>
+
+    </div>
+</body>
+
+</html>
