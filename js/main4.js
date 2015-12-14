@@ -62,7 +62,7 @@ function plot1() {
 function plot2() {
 
     var width = 960,
-        height = 136,
+        height = 150,
         cellSize = 17; // cell size
 
     var percent = d3.format(""),
@@ -76,7 +76,7 @@ function plot2() {
         .data(d3.range(2008, 2009))
         .enter().append("svg")
         .attr("width", width)
-        .attr("height", height)
+        .attr("height", height + 40)
         .attr("class", "RdYlGn")
         .append("g")
         .attr("transform", "translate(" + ((width - cellSize * 53) / 2) + "," + (height - cellSize * 7 - 1) + ")");
@@ -95,9 +95,6 @@ function plot2() {
         .attr("x", function (d) { return d3.time.weekOfYear(d) * cellSize; })
         .attr("y", function (d) { return d.getDay() * cellSize; })
         .datum(format);
-
-    rect.append("title")
-        .text(function (d) { return d; });
 
     var legend = svg.selectAll(".legend")
         .data(month)
@@ -119,36 +116,67 @@ function plot2() {
 
 
 
-    d3.csv("data/CancellationByDay.csv", function (error, csv) {
+    d3.csv("data/CancellationByDayHour.csv", function (error, csv) {
         if (error) throw error;
 
         var data = d3.nest()
             .key(function (d) { return d.Date; })
-            .rollup(function (d) { return d[0].TotalCancelled; })
+            .rollup(function (d) { return [d[0].TotalCancelled, d[0].T0, d[0].T1, d[0].T2, d[0].T3, d[0].T4, d[0].T5]; })
             .map(csv);
 
         rect.filter(function (d) { return d in data; })
-            .attr("class", function (d) { return "day " + color(data[d]); })
-            .select("title")
-            .text(function (d) { return d + ": " + percent(data[d]); });
-      
+            .attr("class", function (d) { return "day " + color(data[d][0]); });
+
         //  Tooltip
         rect.on("mouseover", mouseover);
         rect.on("mouseout", mouseout);
         function mouseover(d) {
             tooltip.style("visibility", "visible");
-            var percent_data = (data[d] !== undefined) ? percent(data[d]) : percent(0);
-            var purchase_text = d + ": " + percent_data;
+
+            var out_text = "Date: " + d + "<br>" + "Total Cancel: " + data[d][0],
+                out_text = out_text + "<br>" + "12am-04am: " + data[d][1],
+                out_text = out_text + "<br>" + "04am-08am: " + data[d][2],
+                out_text = out_text + "<br>" + "08am-12pm: " + data[d][3],
+                out_text = out_text + "<br>" + "12pm-04pm: " + data[d][4],
+                out_text = out_text + "<br>" + "04pm-08pm: " + data[d][5],
+                out_text = out_text + "<br>" + "08pm-12pm: " + data[d][6];
 
             tooltip.transition()
                 .duration(200)
                 .style("opacity", .9);
 
-            tooltip.html(purchase_text)
+            tooltip.html(out_text)
                 .style('background-color', 'white')
                 .style("left", (d3.event.pageX) + 30 + "px")
                 .style("top", (d3.event.pageY) + "px");
         }
+
+
+                var legend = svg.selectAll(".legend")
+                    .data(["#ffffcc","#d9f0a3","#addd8e","#78c679","#31a354","#006837"]);
+
+                legend.enter().append("g")
+                    .attr("class", "legend");
+
+        legend.append("rect")
+            .attr("x", function (d, i) { return i + 180; })
+            .attr("y", 125)
+            .attr("width", 85)
+            .attr("height", 17)
+            .style("fill", function (d) { return d; });
+
+        legend.append("text")
+            .data([0,1,2,3,4,5,6])
+            .text(function (d, i) { return '> ' + i*400; })
+            .attr("x", function (d) { return   d -15 + 210; })
+            .attr("y", 160);
+
+
+
+
+
+
+
     });
 
     function monthPath(t0) {
@@ -266,20 +294,20 @@ function plot4() {
                     .style("fill", colors[0])
                     .on("mouseover", mouseover)
                     .on("mouseout", mouseout);
-                    
-                    function mouseover(d) {
-                        tooltip.style("visibility", "visible");
-                        var delaytime = days[d.day - 1] + "-" + times[d.hour - 1] + "m: " + Math.round(d.value) + " min";
-                        tooltip.transition()
-                            .duration(200)
-                            .style("opacity", .9);
 
-                        tooltip.html(delaytime)
-                            .style('background-color', 'white')
-                            .style("left", (d3.event.pageX) + 30 + "px")
-                            .style("top", (d3.event.pageY) + "px");
-                    }
-                    
+                function mouseover(d) {
+                    tooltip.style("visibility", "visible");
+                    var delaytime = days[d.day - 1] + "-" + times[d.hour - 1] + "m: " + Math.round(d.value) + " min";
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+
+                    tooltip.html(delaytime)
+                        .style('background-color', 'white')
+                        .style("left", (d3.event.pageX) + 30 + "px")
+                        .style("top", (d3.event.pageY) + "px");
+                }
+
 
                 cards.transition().duration(1000)
                     .style("fill", function (d) { return colorScale(d.value); });
