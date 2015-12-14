@@ -152,11 +152,11 @@ function plot2() {
         }
 
 
-                var legend = svg.selectAll(".legend")
-                    .data(["#ffffcc","#d9f0a3","#addd8e","#78c679","#31a354","#006837"]);
+        var legend = svg.selectAll(".legend")
+            .data(["#ffffcc", "#d9f0a3", "#addd8e", "#78c679", "#31a354", "#006837"]);
 
-                legend.enter().append("g")
-                    .attr("class", "legend");
+        legend.enter().append("g")
+            .attr("class", "legend");
 
         legend.append("rect")
             .attr("x", function (d, i) { return i + 180; })
@@ -166,17 +166,10 @@ function plot2() {
             .style("fill", function (d) { return d; });
 
         legend.append("text")
-            .data([0,1,2,3,4,5,6])
-            .text(function (d, i) { return '> ' + i*400; })
-            .attr("x", function (d) { return   d -15 + 210; })
+            .data([0, 1, 2, 3, 4, 5, 6])
+            .text(function (d, i) { return '> ' + i * 400; })
+            .attr("x", function (d) { return d - 15 + 210; })
             .attr("y", 160);
-
-
-
-
-
-
-
     });
 
     function monthPath(t0) {
