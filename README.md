@@ -33,7 +33,6 @@ It will be shown as bar plot with hour as x-axis and average delay time as y-axi
 The delays follow the trend of the trafic hour of the day. So I want to see hour the delays over the days in a week.
 In figure 4, I want to show the dealy in day/hour heatmap. It shows the long delay in friday night and monday early morning.
 
-
 ### Version 1
 
 > Four figures are shown in a raw format.
@@ -52,7 +51,14 @@ Figure 4 is day/hour heatmap and it is also based on the Day/Hour heatmap in d3.
 ### Version 4
 
 > Based on the first feedback, I added the hourly cancellation information in tooltips in figure 2. 
-I also add a colorbar in figure 2. In figure 4, tooltips are also added.
+I also add a colorbar in figure 2. In figure 4, tooltips are also added. 
+Update the title in figure 3 and 4 based on the feedback 2.
+
+### Final Version
+
+> Final version is version 4.
+
+
 
 ## Feedbacks
 
@@ -88,11 +94,25 @@ Here are some questions,
 
 ### Feedback 3
 
+What do you notice in the visualization?
 
+> There is some relationship between weather and cancellation rate as well as time of a day and the flight delay time.
 
+What questions do you have about the data?
 
+> For some people who’s interested in the flight cancellation rate, these figures are very clear and helpful, but for someone who want to use these figures as a reference for choosing flight to lower the chance of flight cancellation or delay, this might not be that informative, especially for the flight delay. Because there are very few flights taking off between 2-5am, so I think it will be more helpful if you can plot the ratio of flight with delay among all the flights.
 
+What relationships do you notice?
 
+> Firstly, for the months that typically have bad weather, usually have high the cancellation; secondly, the number of flight cancellation is high during the seasons with extreme weather, but there is no real correlation between the day of the week and the number of flight cancellation; lastly, for the flight delay, the average delay time increased in the day from 6am till 8pm and Tuesday is the day with least delay time.
+
+> What do you think is the main takeaway from this visualization?
+
+Weather is an important reason for cancellation of flight; during time of the day, the flight delay time increases from 5am to 8pm.
+
+> Is there something you don’t understand in the graphic?
+
+I don't think the Figure 3 can give much more information that Figure 4.
 
 ## Reference
 
@@ -101,5 +121,8 @@ Here are some questions,
 3. http://bl.ocks.org/mbostock/4063318
 4. http://bl.ocks.org/tjdecke/5558084
 5. http://www.rita.dot.gov/bts/help/aviation/html/understanding.html
+6. http://blog.mongodb.org/post/58919137318/aggregation-options-on-big-data-sets-part-1-basic
+
+
 
 
