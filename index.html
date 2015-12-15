@@ -13,7 +13,7 @@
     <script src="js/d3.min.js"></script>
     <script src="js/dimple.v2.1.6.min.js"></script>
     <script src="js/main.js"></script>
-    <!--*<script src="js/main1.js"></script>  -->
+
 </header>
 
 <body>
@@ -30,8 +30,8 @@
 
             <h3 style="font-style: italic">Data Set</h3>
             <p> United State flight delays and performance data set is from
-                <a href="http://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp" target="_blank">RITA</a>. The clean data set for 2008
-                is download from
+                <a href="http://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp" target="_blank">RITA</a>. The clean data
+                set for 2008 is download from
                 <a href="http://stat-computing.org/dataexpo/2009/the-data.html" target="_blank">here</a>. Flight cancellation
                 and delay information in 2008 are explored in this report.
             </p>
@@ -50,8 +50,10 @@
             <p>
                 However, the cancellation caused by weather in September is also high. In order to find the reason of high cancellation in
                 September, flight cancellation heatmap for each day in 2008 is shown in Figure 2. We can see that Sep. 12
-                to Sep. 14 have over 1000 flights cancellation each day and it is <a href="http://www.srh.noaa.gov/lzk/?n=svr0908yr.htm" target="_blank"> hurricane Ike</a>                after I check the weather history.
+                to Sep. 14 have over 1000 flights cancellation each day and it is <a href="http://www.srh.noaa.gov/lzk/?n=svr0908yr.htm"
+                target="_blank"> hurricane Ike</a> after I check the weather history.
             </p>
+
 
         </div>
 
@@ -63,6 +65,22 @@
                 plot1()
             </script>
         </div>
+
+
+            <p style='font-size:15px; margin-bottom:10px'>
+            <b> <a href="http://www.rita.dot.gov/bts/help/aviation/html/understanding.html">How are cancellation categories defined</a></b>
+                <ul>
+                <li><b>Extreme Weather</b>: Significant meteorological conditions (actual or forecasted) that, in the judgment of the carrier, delays or prevents the operation of a flight such as tornado, blizzard or hurricane.</li>
+                <br>
+                <li><b>Air Carrier</b>: The cause of the cancellation or delay was due to circumstances within the airline's control (e.g. maintenance or crew problems, aircraft cleaning, baggage loading, fueling, etc.).</li>
+                <br>
+                <li><b>National Aviation System (NAS)</b>: Delays and cancellations attributable to the national aviation system that refer to a broad set of conditions, such as non-extreme weather conditions, airport operations, heavy traffic volume, and air traffic control.</li>
+                <br>
+                <li><b>Security</b>: Delays or cancellations caused by evacuation of a terminal or concourse, re-boarding of aircraft because of security breach, inoperative screening equipment and/or long lines in excess of 29 minutes at screening areas.</li>
+                </ul>
+
+
+            </p>
 
 
         <br>
@@ -99,7 +117,7 @@
 
         <br>
         <center>
-            <h4> Figure 3: Average Flights Delay Time Over Hours</h4></center>
+            <h4> Figure 3: Average Flights Delay Time Over Hours in 2008</h4></center>
         <div class="delayBar">
             <script>
                 plot3()
@@ -109,7 +127,7 @@
 
         <br>
         <center>
-            <h4> Figure 4: Heatmap of Average Flights Delay Time Over Hours and Days by Week</h4></center>
+            <h4> Figure 4: Heatmap of Average Flights Delay Time Over Hours and Days by Week in 2008</h4></center>
         <div class="delayHeatmap">
             <script>
                 plot4()

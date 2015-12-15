@@ -14,6 +14,7 @@ var tooltip = d3.select("body")
     .style("visibility", "hidden")
     .text("a simple tooltip");
 
+// mouse out function 
 function mouseout(d) {
     tooltip.transition()
         .duration(500)
@@ -38,6 +39,7 @@ function plot1() {
         ];
 
         myChart.setBounds(60, 40, 680, 255);
+        
         var x = myChart.addCategoryAxis("x", "Month");
         x.addOrderRule(month);
         x.fontSize = fs;
@@ -59,15 +61,16 @@ function plot1() {
 
 
 // plot2 is calendar visulization of cancellation by each data
+// Code is based on http://bl.ocks.org/mbostock/4063318
 function plot2() {
 
     var width = 960,
         height = 150,
         cellSize = 17; // cell size
 
-    var percent = d3.format(""),
-        format = d3.time.format("%Y-%m-%d");
+    var format = d3.time.format("%Y-%m-%d");
 
+    // setup color
     var color = d3.scale.quantize()
         .domain([0, 2400])
         .range(d3.range(6).map(function (d) { return "q" + d + "-6"; }));
@@ -114,8 +117,6 @@ function plot2() {
         .attr("class", "month")
         .attr("d", monthPath);
 
-
-
     d3.csv("data/CancellationByDayHour.csv", function (error, csv) {
         if (error) throw error;
 
@@ -132,7 +133,7 @@ function plot2() {
         rect.on("mouseout", mouseout);
         function mouseover(d) {
             tooltip.style("visibility", "visible");
-
+            
             var out_text = "Date: " + d + "<br>" + "Total Cancel: " + data[d][0],
                 out_text = out_text + "<br>" + "12am-04am: " + data[d][1],
                 out_text = out_text + "<br>" + "04am-08am: " + data[d][2],
@@ -151,7 +152,7 @@ function plot2() {
                 .style("top", (d3.event.pageY) + "px");
         }
 
-
+        // add colorbar
         var legend = svg.selectAll(".legend")
             .data(["#ffffcc", "#d9f0a3", "#addd8e", "#78c679", "#31a354", "#006837"]);
 
@@ -188,8 +189,7 @@ function plot2() {
 
 
 
-//
-
+// plot3 is bar plot of average delay time by hours
 function plot3() {
     var svg = dimple.newSvg(".delayBar", 800, 350);
 
@@ -198,11 +198,11 @@ function plot3() {
       
         // Set a variety of default colors
         myChart.defaultColors = [
-            /* new dimple.color("#7fc97f"),*/
             new dimple.color("#beaed4")
         ];
 
         myChart.setBounds(60, 40, 720, 255);
+        
         var x = myChart.addCategoryAxis("x", "Hour");
         x.addOrderRule(times);
         x.fontSize = fs;
@@ -220,9 +220,10 @@ function plot3() {
 }
 
 
-//
-
+// plot 4 is average delay time in day/hour 
+// Code is based on http://bl.ocks.org/tjdecke/5558084
 function plot4() {
+    
     var margin = { top: 50, right: 0, bottom: 100, left: 40 },
         width = 800 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom,
@@ -276,6 +277,7 @@ function plot4() {
 
                 cards.append("title");
 
+                // add tooltips
                 cards.enter().append("rect")
                     .attr("x", function (d) { return (d.hour - 1) * gridSize; })
                     .attr("y", function (d) { return (d.day - 1) * gridSize; })
@@ -309,6 +311,7 @@ function plot4() {
 
                 cards.exit().remove();
 
+                // add color bar
                 var legend = svg.selectAll(".legend")
                     .data([0].concat(colorScale.quantiles()), function (d) { return d; });
 
